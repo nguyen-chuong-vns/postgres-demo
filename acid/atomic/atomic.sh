@@ -17,7 +17,7 @@ function setup_database () {
     echo "###### End Tx1 ######"
 
     echo "###### Start Tx2: truncate table and insert data in concurrent and break the insert process after $(($sleep_time / 2))s ######"
-    psql -q -h localhost -p 5432 -U postgres -f data/insert.sql &
+    psql -q -h localhost -p 5432 -U postgres -f data/truncate.sql &
     sleep $(($sleep_time / 2))
     echo "###### Break the running Tx2 ######" 
     docker stop postgresql
